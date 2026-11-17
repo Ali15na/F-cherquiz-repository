@@ -453,6 +453,11 @@ button:disabled {
   gap: 12px;
 }
 
+.audio-play-button {
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #25a77b, #168660);
+}
+
 .answer-button {
   color: #34415d;
   text-align: left;

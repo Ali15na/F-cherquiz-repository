@@ -8,7 +8,26 @@ const subjects = [
   { name: 'Geschichte', icon: '🏛️' },
   { name: 'Englisch', icon: '🇬🇧' },
   { name: 'Physik', icon: '⚡' },
-  { name: 'Geografie', icon: '🌍' }
+  { name: 'Geografie', icon: '🌍' },
+  { name: 'Musik', icon: '🎵' }
+];
+
+const musicQuestionPool = [
+  { question: 'Höre dir den Ton an. Welche Note ist es?', audioNotes: [60], answers: ['C4', 'D4', 'E4', 'G4'], correct: 'C4', explanation: 'Der Ton ist C4.' },
+  { question: 'Welche bekannte Melodie hörst du?', audioNotes: [64, 64, 65, 67, 67, 65, 64, 62], answers: ['Ode an die Freude', 'Bruder Jakob', 'Alle meine Entchen', 'Morgen kommt der Weihnachtsmann'], correct: 'Ode an die Freude', explanation: 'Das ist der Anfang von Beethovens „Ode an die Freude“.' },
+  { question: 'Welche bekannte Melodie hörst du?', audioNotes: [60, 62, 64, 60, 60, 62, 64, 60], answers: ['Bruder Jakob', 'Ode an die Freude', 'Hänschen klein', 'Alle meine Entchen'], correct: 'Bruder Jakob', explanation: 'Das ist der Anfang des traditionellen Kanons „Bruder Jakob“.' },
+  { question: 'Welche bekannte Melodie hörst du?', audioNotes: [60, 60, 67, 67, 69, 69, 67], answers: ['Morgen kommt der Weihnachtsmann', 'Bruder Jakob', 'Ode an die Freude', 'Alle meine Entchen'], correct: 'Morgen kommt der Weihnachtsmann', explanation: 'Die Melodie ist auch als „Twinkle, Twinkle, Little Star“ bekannt.' },
+  { question: 'Höre dir den Ton an. Welche Note ist es?', audioNotes: [67], answers: ['E4', 'F4', 'G4', 'A4'], correct: 'G4', explanation: 'Der Ton ist G4.' },
+  { question: 'Was macht die Tonhöhe in dieser Melodie?', audioNotes: [60, 64, 67, 64], answers: ['Sie steigt und sinkt wieder.', 'Sie sinkt die ganze Zeit.', 'Sie bleibt gleich.', 'Sie steigt die ganze Zeit.'], correct: 'Sie steigt und sinkt wieder.', explanation: 'Die Tonhöhe geht erst nach oben und danach wieder nach unten.' },
+  { question: 'Wie viele verschiedene Töne hörst du?', audioNotes: [60, 60, 64, 64, 67, 60], answers: ['2', '3', '4', '6'], correct: '3', explanation: 'Es kommen drei verschiedene Töne vor: C, E und G.' },
+  { question: 'Welche bekannte Melodie hörst du?', audioNotes: [60, 62, 64, 65, 67, 67, 67], answers: ['Alle meine Entchen', 'Bruder Jakob', 'Ode an die Freude', 'Morgen kommt der Weihnachtsmann'], correct: 'Alle meine Entchen', explanation: 'Das ist der Anfang des traditionellen Kinderlieds „Alle meine Entchen“.' },
+  { question: 'Welche Instrumentengruppe passt zur Trompete?', answers: ['Blechblasinstrumente', 'Streichinstrumente', 'Tasteninstrumente', 'Schlaginstrumente'], correct: 'Blechblasinstrumente' },
+  { question: 'Wie nennt man das gleichzeitige Erklingen mehrerer verschiedener Töne?', answers: ['Akkord', 'Pause', 'Taktstrich', 'Echo'], correct: 'Akkord' },
+  { question: 'Welches Zeichen verlängert einen Ton um die Hälfte seines Wertes?', answers: ['Der Punkt hinter der Note', 'Der Taktstrich', 'Das Kreuz vor der Note', 'Der Notenschlüssel'], correct: 'Der Punkt hinter der Note' },
+  { question: 'Wie viele Schläge hat ein üblicher 3/4-Takt pro Takt?', answers: ['2', '3', '4', '6'], correct: '3' },
+  { question: 'Welches Instrument hat normalerweise Tasten und Saiten?', answers: ['Klavier', 'Querflöte', 'Trompete', 'Trommel'], correct: 'Klavier' },
+  { question: 'Was bedeutet „forte“ in der Musik?', answers: ['Laut', 'Leise', 'Schnell', 'Langsam'], correct: 'Laut' },
+  { question: 'Welcher Notenschlüssel wird meistens für hohe Töne verwendet?', answers: ['Violinschlüssel', 'Bassschlüssel', 'Akkolade', 'Taktstrich'], correct: 'Violinschlüssel' }
 ];
 
 const questionPools = {
@@ -147,7 +166,8 @@ const questionPools = {
     { question: 'Welche Stadt liegt in der Schweiz?', answers: ['Bern', 'Lissabon', 'Prag', 'Kopenhagen'], correct: 'Bern' },
     { question: 'Welcher Kontinent ist am dichtesten besiedelt?', answers: ['Afrika', 'Europa', 'Asien', 'Nordamerika'], correct: 'Asien' },
     { question: 'Was ist eine Wüste?', answers: ['trockenes und sehr warmes Gebiet', 'frostiges Hochland', 'beschneites Gebirge', 'dichtes Regenwaldgebiet'], correct: 'trockenes und sehr warmes Gebiet' }
-  ]
+  ],
+  Musik: musicQuestionPool
 };
 
 const olympiadQuestionPools = {
@@ -230,6 +250,16 @@ const olympiadQuestionPools = {
     { question: 'Zwei Orte liegen etwa 30 Längengrade auseinander. Wie groß ist der mittlere Unterschied ihrer Ortszeit ungefähr?', answers: ['1 Stunde', '2 Stunden', '3 Stunden', '12 Stunden'], correct: '2 Stunden', explanation: 'Die Erde dreht sich in 24 Stunden um 360 Grad, also entsprechen 15 Längengrade ungefähr einer Stunde.' },
     { question: 'Ein Land exportiert fast ausschließlich Kaffee. Warum kann das wirtschaftlich riskant sein?', answers: ['Ein Preisverfall bei Kaffee kann die Exporterlöse stark senken.', 'Kaffee lässt sich grundsätzlich nicht transportieren.', 'Ein einzelnes Exportgut verhindert jede Landwirtschaft.', 'Weltmarktpreise ändern sich niemals.'], correct: 'Ein Preisverfall bei Kaffee kann die Exporterlöse stark senken.', explanation: 'Eine starke Abhängigkeit von einem Exportprodukt macht ein Land anfällig für Preisschwankungen und Ernteausfälle.' },
     { question: 'Welche Aussage erklärt eine typische Folge des El-Niño-Phänomens im östlichen tropischen Pazifik?', answers: ['Die Meeresoberfläche wird ungewöhnlich warm und verändert Niederschlagsmuster.', 'Der Pazifik friert entlang des Äquators vollständig zu.', 'Die Erdachse kippt für mehrere Monate.', 'Alle tropischen Wirbelstürme verschwinden weltweit.'], correct: 'Die Meeresoberfläche wird ungewöhnlich warm und verändert Niederschlagsmuster.', explanation: 'El Niño ist eine periodische Erwärmung des zentralen und östlichen tropischen Pazifiks, die Wetter- und Niederschlagsmuster beeinflussen kann.' }
+  ],
+  Musik: [
+    { question: 'Welche bekannte Melodie hörst du?', audioNotes: [64, 64, 65, 67, 67, 65, 64, 62], answers: ['Ode an die Freude', 'Bruder Jakob', 'Alle meine Entchen', 'Morgen kommt der Weihnachtsmann'], correct: 'Ode an die Freude', explanation: 'Das ist der Anfang von Beethovens „Ode an die Freude“.' },
+    { question: 'Der erste Ton ist C4, der letzte C5. Wie groß ist der Abstand?', audioNotes: [60, 64, 67, 72], answers: ['Eine Oktave', 'Eine Quinte', 'Eine Terz', 'Ein Ganzton'], correct: 'Eine Oktave', explanation: 'C4 bis zum nächsthöheren C5 umfasst zwölf Halbtonschritte: eine Oktave.' },
+    { question: 'Welche bekannte Melodie hörst du?', audioNotes: [60, 62, 64, 60, 60, 62, 64, 60], answers: ['Bruder Jakob', 'Alle meine Entchen', 'Ode an die Freude', 'Hänschen klein'], correct: 'Bruder Jakob', explanation: 'Das ist der Anfang des traditionellen Kanons „Bruder Jakob“.' },
+    { question: 'Wie viele verschiedene Tonhöhen kommen in der Tonfolge vor?', audioNotes: [60, 64, 67, 64, 60, 67], answers: ['2', '3', '4', '6'], correct: '3', explanation: 'Es kommen drei verschiedene Töne vor: C, E und G.' },
+    { question: 'Welche Note klingt am Ende der Tonfolge?', audioNotes: [62, 65, 69], answers: ['D4', 'F4', 'A4', 'C5'], correct: 'A4', explanation: 'Der letzte Ton ist A4.' },
+    { question: 'Welche bekannte Melodie hörst du?', audioNotes: [60, 62, 64, 65, 67, 67, 67], answers: ['Alle meine Entchen', 'Bruder Jakob', 'Ode an die Freude', 'Morgen kommt der Weihnachtsmann'], correct: 'Alle meine Entchen', explanation: 'Das ist der Anfang des traditionellen Kinderlieds „Alle meine Entchen“.' },
+    { question: 'Welcher Dreiklang wird gespielt?', audioNotes: [60, 64, 67], answers: ['C-Dur', 'C-Moll', 'G-Dur', 'A-Moll'], correct: 'C-Dur', explanation: 'C, E und G bilden zusammen den C-Dur-Dreiklang.' },
+    { question: 'Welche bekannte Melodie hörst du?', audioNotes: [60, 60, 67, 67, 69, 69, 67], answers: ['Morgen kommt der Weihnachtsmann', 'Bruder Jakob', 'Ode an die Freude', 'Alle meine Entchen'], correct: 'Morgen kommt der Weihnachtsmann', explanation: 'Die Melodie ist auch als „Twinkle, Twinkle, Little Star“ bekannt.' }
   ]
 };
 
@@ -293,6 +323,7 @@ let supabaseClient = null;
 
 const LOCAL_PROFILE_KEY = 'faecherquiz-local-profile';
 const LOCAL_ACCOUNTS_KEY = 'faecherquiz-local-accounts';
+let musicAudioContext = null;
 
 function readLocalJson(key, fallback) {
   try {
@@ -458,6 +489,37 @@ function showAuth() {
   resultScreen.classList.add('hidden');
   authScreen.classList.remove('hidden');
   loginUsername.focus();
+}
+
+async function playMusicNotes(notes) {
+  const AudioContextConstructor = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextConstructor) {
+    throw new Error('Dieser Browser unterstützt keine Audio-Wiedergabe.');
+  }
+
+  musicAudioContext ||= new AudioContextConstructor();
+  if (musicAudioContext.state === 'suspended') {
+    await musicAudioContext.resume();
+  }
+
+  const noteDuration = 0.32;
+  const noteGap = 0.07;
+  const startTime = musicAudioContext.currentTime + 0.05;
+
+  notes.forEach((midiNote, index) => {
+    const noteStart = startTime + index * (noteDuration + noteGap);
+    const oscillator = musicAudioContext.createOscillator();
+    const gain = musicAudioContext.createGain();
+    oscillator.type = 'triangle';
+    oscillator.frequency.setValueAtTime(440 * (2 ** ((midiNote - 69) / 12)), noteStart);
+    gain.gain.setValueAtTime(0.0001, noteStart);
+    gain.gain.exponentialRampToValueAtTime(0.14, noteStart + 0.025);
+    gain.gain.exponentialRampToValueAtTime(0.0001, noteStart + noteDuration);
+    oscillator.connect(gain);
+    gain.connect(musicAudioContext.destination);
+    oscillator.start(noteStart);
+    oscillator.stop(noteStart + noteDuration + 0.01);
+  });
 }
 
 async function createAccount(username, password) {
@@ -797,6 +859,26 @@ function displayQuestion() {
     : `Punkte: ${score}`;
 
   answerButtons.innerHTML = '';
+
+  if (question.audioNotes) {
+    const playButton = document.createElement('button');
+    playButton.className = 'audio-play-button';
+    playButton.type = 'button';
+    playButton.textContent = '▶ Melodie anhören';
+    playButton.addEventListener('click', async () => {
+      playButton.disabled = true;
+      try {
+        await playMusicNotes(question.audioNotes);
+      } catch (error) {
+        console.error('Musikfrage konnte nicht abgespielt werden:', error);
+        feedback.textContent = 'Der Ton konnte nicht abgespielt werden. Prüfe die Audio-Einstellungen deines Geräts.';
+        feedback.style.color = '#c54552';
+      } finally {
+        playButton.disabled = false;
+      }
+    });
+    answerButtons.appendChild(playButton);
+  }
 
   const shuffledAnswers = [...question.answers].sort(() => Math.random() - 0.5);
 
