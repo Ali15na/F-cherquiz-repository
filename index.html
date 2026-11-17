@@ -7,10 +7,111 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="authScreen"></div>
-    <div id="homeScreen"></div>
-    <div id="quizScreen"></div>
-    <div id="resultScreen"></div>
+    <main class="container">
+      <header class="top-header">
+        <h1>Fächerquiz Arena</h1>
+        <p class="subtitle">Wähle ein Fach und zeig, was du weißt!</p>
+      </header>
+
+      <section id="authScreen" class="panel auth-card">
+        <h2>Willkommen!</h2>
+        <p>Melde dich an oder erstelle ein Spielkonto.</p>
+
+        <form id="loginForm" class="auth-form">
+          <label for="loginUsername">Spielername</label>
+          <input id="loginUsername" name="username" type="text" autocomplete="username" required />
+          <label for="loginPassword">Passwort</label>
+          <input id="loginPassword" name="password" type="password" autocomplete="current-password" required />
+          <button class="primary-button" type="submit">Anmelden</button>
+        </form>
+
+        <div class="divider">oder Konto erstellen</div>
+
+        <form id="registerForm" class="auth-form">
+          <label for="registerUsername">Neuer Spielername</label>
+          <input id="registerUsername" name="username" type="text" autocomplete="username" required />
+          <label for="registerPassword">Neues Passwort</label>
+          <input id="registerPassword" name="password" type="password" autocomplete="new-password" required />
+          <button class="secondary-button" type="submit">Konto erstellen</button>
+        </form>
+
+        <p id="authMessage" class="auth-message" role="status" aria-live="polite"></p>
+        <p class="privacy-note">Verwende einen Spielernamen statt deines echten Namens.</p>
+      </section>
+
+      <section id="homeScreen" class="panel hidden">
+        <div class="player-bar">
+          <div>
+            <span class="label">Angemeldet als</span>
+            <strong id="playerName"></strong>
+          </div>
+          <button id="logoutButton" class="ghost-button" type="button">Abmelden</button>
+        </div>
+
+        <div class="profile-card">
+          <p id="playerStats"></p>
+          <p id="savedProgress"></p>
+        </div>
+
+        <section class="contest-card">
+          <h2>Fach-Olympiade vor Ort</h2>
+          <p>Spielt gemeinsam an einem Gerät. Gebt die Namen von zwei bis vier Teilnehmenden ein.</p>
+          <label for="contestSubject">Fach</label>
+          <select id="contestSubject"></select>
+          <label for="contestPlayers">Spielernamen (durch Kommas getrennt)</label>
+          <input id="contestPlayers" type="text" placeholder="z. B. Alex, Sam" />
+          <button id="contestStartButton" class="primary-button" type="button">Turnier starten</button>
+          <p id="contestMessage" class="contest-message" role="status" aria-live="polite"></p>
+          <div class="leaderboard">
+            <h3>Bestenliste</h3>
+            <ol id="leaderboardList"></ol>
+          </div>
+        </section>
+
+        <h2>Einzelquiz</h2>
+        <p>Wähle ein Fach und starte eine Olympiade oder ein Grundlagen-Training.</p>
+        <div id="subjectGrid" class="subject-grid"></div>
+
+        <section id="teacherDashboard" class="teacher-dashboard hidden">
+          <h2>Lehrkraft-Übersicht</h2>
+          <p id="teacherMessage" class="teacher-message" role="status" aria-live="polite"></p>
+          <h3>Bestenliste</h3>
+          <div class="teacher-table-wrap">
+            <table>
+              <thead><tr><th>Platz</th><th>Spielername</th><th>Punkte</th><th>Fächer</th></tr></thead>
+              <tbody id="teacherScores"></tbody>
+            </table>
+          </div>
+          <h3>Letzte Quiz-Ergebnisse</h3>
+          <div class="teacher-table-wrap">
+            <table>
+              <thead><tr><th>Spielername</th><th>Fach</th><th>Ergebnis</th><th>Art</th><th>Zeitpunkt</th></tr></thead>
+              <tbody id="teacherResults"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section id="quizScreen" class="panel hidden">
+        <button id="backButton" class="back-button" type="button">Zurück zur Übersicht</button>
+        <div class="quiz-meta">
+          <span id="questionCounter"></span>
+          <span id="streakBadge"></span>
+          <span id="xpBadge"></span>
+        </div>
+        <h2 id="questionText"></h2>
+        <div id="answerButtons" class="answer-buttons"></div>
+        <p id="feedback" role="status" aria-live="polite"></p>
+        <p id="scoreText"></p>
+      </section>
+
+      <section id="resultScreen" class="panel hidden">
+        <h2>Runde beendet!</h2>
+        <p id="resultText" class="result-text"></p>
+        <button id="restartButton" class="primary-button" type="button">Noch einmal spielen</button>
+        <button id="homeButton" class="ghost-button" type="button">Zur Übersicht</button>
+      </section>
+    </main>
 
     <script src="script.js"></script>
   </body>
